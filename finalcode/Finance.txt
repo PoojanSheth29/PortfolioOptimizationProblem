@@ -1,0 +1,7 @@
+1. annual return 
+annual return basically helps in calcualting total retun rate. It is the total income generated over the investment made by the individual over a particular period of time.It can be calcualted as follows :
+(ending value - beginning value) / beginning value ^ 1/no of years  - 1
+
+2.annual volatility 
+Annual volatility basically helps in determing the swings in the price ranges of any commodoty / assest or any kind of share around its mean price level. Hence it is from the measurement of volatitlity an investor can identify the total deviation of share price from its avearge price and helps them in decsion making over the deployement of finances.
+It serves as an important decision making tool because a security with higher volatility normamlly carries a high risk level as the prices of it are spreaded out, and are tend to have fluctuations over a short period of time and thus resulting in risk
