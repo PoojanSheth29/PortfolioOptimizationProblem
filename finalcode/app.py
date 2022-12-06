@@ -31,60 +31,24 @@ def backend(inputdata,stocksymbol,investment):
     end = dt.datetime.now()
     start = end - dt.timedelta(days = 1461)
     
-    def getMyPortfolio(stocks = stocksymbol, start = start, end = end):
-      data = pdr.get_data_yahoo(stocks, start = start, end = end)['Adj Close']
-      return data
     
-    
-    
-    
-    data = getMyPortfolio(stocksymbol)
-    
-    
-    
-    
-    plt.rcParams["figure.figsize"] = [8.50, 3.50]
-    plt.rcParams["figure.autolayout"] = True
-    fig = plt.figure()
-    fig.subplots_adjust(bottom=0.1)
-    for i in data.columns.values:
-        plt.plot(data[i], label = i)
-    plt.title('STOCK COMPARISON CHART')
-    plt.xlabel('Time', fontsize = 18)
-    plt.ylabel('Price (Rs)',fontsize = 18)
-    plt.legend(data.columns.values, loc = 'upper left')
-    plt.savefig('foo.png')
-    
-    
+    data = pdr.get_data_yahoo(stocksymbol, start = start, end = end)['Adj Close']
+    print("$$$$$$$$$$$$$$$$$$$$$$$$4",type(data))
     
     returns = data.pct_change()
     print(returns)
     
-    
-    
     cov_matrix = returns.cov()*252
     print(cov_matrix)
-    
-    
-    
     
     variance = np.dot(weights.T, np.dot(cov_matrix, weights))
     round(variance, 3)
     
-    
-    
     volatility = np.sqrt(variance)
     round(volatility, 4)
     
-    
-    
-    
     simple_return = np.sum(returns.mean() * weights) * 251
     round(simple_return, 4)
-    
-    
-    
-    
     
     perc_var = str(round(variance, 4) * 100) + '%'
     print('Annual Variance : ' + perc_var)
@@ -123,5 +87,13 @@ def backend(inputdata,stocksymbol,investment):
     print('Funds Remaining : {:.2f}$'.format(leftover))
 
     
-    return allocation,leftover;
+    return allocation,leftover,data;
+
+
+  
+
+
+
+
+
     

@@ -9,7 +9,7 @@ st.title("Portfolio Optimization")
 
 #reading data
 def get_data():
-    path = r'C:/Users/POOJAN/OneDrive/Desktop/Protfolio_Project/finalcode/comapnies.csv'
+    path = r'C:/Users/POOJAN/OneDrive/Desktop/Protfolio_Project/finalcode/companies.csv'
     return pd.read_csv(path)
 
 df = get_data()
@@ -52,23 +52,32 @@ if st.button("Add to My Portfolio"):
     invested_amt = st.write('You have invested Rs.', investment)
 
     #output variables
-    allocation,leftover = backend(inputdata, stocksymbol, investment)
+    allocation,leftover,data = backend(inputdata, stocksymbol, investment)
     
     #Graph display section
     st.header(' ')
     st.header('Graphical analysis') 
 
-    data = pd.DataFrame(
-        np.random.randn(100,3),
-        columns = ['a','b','c']
-    )
+    
 
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
     #graph1 = plt.scatter(data['a'],data['b'])
-    foo = Image.open('foo.png')
-    st.image(foo, caption='Enter any caption here')
+    plt.rcParams["figure.figsize"] = [8.50, 3.50]
+    plt.rcParams["figure.autolayout"] = True
+    fig = plt.figure()
+    fig.subplots_adjust(bottom=0.1)
+    for i in data.columns.values:
+        plt.plot(data[i], label = i)
+    plt.title('STOCK COMPARISON CHART')
+    plt.xlabel('Time', fontsize = 18)
+    plt.ylabel('Price (Rs)',fontsize = 18)
+    plt.legend(data.columns.values, loc = 'upper left')
+    plt.savefig('foo.png')
+    # foo = Image.open('foo.png')
+    # st.image(foo, caption='Enter any caption here')
     plt.show()
+    st.pyplot(fig)
 
     #output
     
