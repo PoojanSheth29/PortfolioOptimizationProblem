@@ -9,7 +9,7 @@ st.title("Portfolio Optimization")
 
 #reading data
 def get_data():
-    path = r'C:/Users/POOJAN/OneDrive/Desktop/Protfolio_Project/finalcode/companies.csv'
+    path = r'C:/Users/POOJAN/OneDrive/Desktop/Protfolio_Project/companies.csv'
     return pd.read_csv(path)
 
 df = get_data()
