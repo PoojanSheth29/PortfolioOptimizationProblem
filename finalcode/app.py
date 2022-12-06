@@ -33,7 +33,7 @@ def backend(inputdata,stocksymbol,investment):
     
     
     data = pdr.get_data_yahoo(stocksymbol, start = start, end = end)['Adj Close']
-    print("$$$$$$$$$$$$$$$$$$$$$$$$4",type(data))
+    
     
     returns = data.pct_change()
     print(returns)
@@ -87,7 +87,7 @@ def backend(inputdata,stocksymbol,investment):
     print('Funds Remaining : {:.2f}$'.format(leftover))
 
     
-    return allocation,leftover,data;
+    return perc_var,perc_vola,perc_returns, allocation,leftover,data;
 
 
   

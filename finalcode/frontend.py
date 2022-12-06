@@ -52,7 +52,7 @@ if st.button("Add to My Portfolio"):
     invested_amt = st.write('You have invested Rs.', investment)
 
     #output variables
-    allocation,leftover,data = backend(inputdata, stocksymbol, investment)
+    perc_var,perc_vola,perc_returns,allocation,leftover,data = backend(inputdata, stocksymbol, investment)
     
     #Graph display section
     st.header(' ')
@@ -107,8 +107,16 @@ if st.button("Add to My Portfolio"):
     st.text('Optimized number of stocks to buy for each company : ')
     st.table(allocation_pd)
     st.text(' ')
-    st.text('Leftover amount is: ')
-    st.write(leftover)
+    st.write('Leftover amount is :    ' , round(leftover,2) , '  Rs')
+
+    perc_var = float(perc_var[:-1])
+    st.write('Annual variance is :    ' , round(perc_var,2) , '  %')
+
+    perc_vola = float(perc_vola[:-1])
+    st.write('Annual volatility (Risk) is :    ' , round(perc_vola,2) , '  %')
+
+    perc_returns = float(perc_returns[:-1])
+    st.write('Annual Returns are :    ' , round(perc_returns,2) , '  %')
 
 
     st.subheader('Key Points:')
